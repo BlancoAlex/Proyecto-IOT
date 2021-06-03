@@ -3,7 +3,10 @@
 #include <ESP8266WiFi.h>
 #include <Servo.h>
 #include "DHT.h"
+#include <ThingSpeak.h>
+#include "FirebaseESP8266.h"
 #define DHTTYPE DHT11 // DHT 11
+
 
 const char *mqtt_server = "ioticos.org";
 const int mqtt_port = 1883;
@@ -26,6 +29,18 @@ const char* password = "F4m1l14V4r3l4";
 const char* host = "maker.ifttt.com";
 
 //*************************************
+//************CONFIG GRAPH*************
+//*************************************
+unsigned long channelID = 1406939;
+const char* WriteAPIKey = "SCDCXYFGDYS3WJVV";
+
+//*************************************
+//************CONFIG FIREBASE**********
+//*************************************
+#define FIREBASE_HOST "iott-fdf67-default-rtdb.firebaseio.com"
+#define FIREBASE_AUTH "rGIvKbezquXi4SZSSD1veFzR4aA8DCtQj7ikRrAc"
+
+//*************************************
 //************CONFIG EMAIL*************
 //*************************************
 String apiKey = "cIHL21wmXS7-MsB2fXc-t-"; //"YOUR_IFTTT_API_KEY";
@@ -46,7 +61,7 @@ const int PINB = 12;
 const int SMovimiento = 2;
 DHT dht(DHTPin, DHTTYPE);
 Servo servo1;
-
+FirebaseData firebaseData;
 
 //**************************************
 //*********** VARIABLES  ***************
@@ -60,6 +75,7 @@ char msg[85], msgtemp[30], msghum[30];
 String top;
 String mens = "";
 int EstadoMovimiento;
+String path = "/AmbienteBodega";
 
 //timers
 const unsigned long publeshTemp = 25000;
@@ -72,7 +88,12 @@ unsigned long lastPubleshHum;
 void callback(char* topic, byte* payload, unsigned int length);
 void reconnect();
 void setup_wifi();
-
+void printResult(FirebaseData &data);
+void CausaError(void);
+void InforSetTemperatura(void);
+void InforGetTemperatura(void);
+void InforSetHumedad(void);
+void InforGetHumedad(void);*/
 
 bool event = false;
 
@@ -85,6 +106,13 @@ void setup() {
   setup_wifi();
   client.setServer(mqtt_server, mqtt_port);
   client.setCallback(callback);
+  ThingSpeak.begin(espClient);
+  Firebase.begin(FIREBASE_HOST, FIREBASE_AUTH);
+  Firebase.reconnectWiFi(true);
+
+  Firebase.setReadTimeout(firebaseData, 1000 * 60);
+  Firebase.setwriteSizeLimit(firebaseData, "tiny");
+  
   //SENSORES
   pinMode(DHTPin, INPUT);
   pinMode(cooler, OUTPUT);
@@ -109,6 +137,8 @@ void loop() {
     if (!isnan(lastT)) {
       t = lastT;
     }
+    ThingSpeak.setField(1,t);
+    ThingSpeak.setField(2,h);
     
     strpublicar = "Temperatura: " + String(t) + "°C  " + "Humedad: " + String(h) + "%" + "Temperatura limite: " + tempLimit + " Estado de puerta: " + stateServo;
     strpublicar.toCharArray(msg, 85);
@@ -136,6 +166,10 @@ void loop() {
   client.loop();
  //refri();
   leerSubscripcion();
+  ThingSpeak.writeFields(channelID,WriteAPIKey);
+  Serial.print("Datos enviados");
+  dataBase();
+  delay(30000);
   
 }
 
@@ -248,7 +282,7 @@ void leerSubscripcion() {
     Serial.println(mens);
     if (mens == "abrir"){ // && digitalRead(SMovimiento) == 1) 
       Serial.println(mens);
-      servo1.write(120);
+      servo1.write(85);
       digitalWrite(PINB,HIGH);
       digitalWrite(PINR,LOW);
       stateServo = true;
@@ -322,4 +356,87 @@ void detectarMovimeinto(){
     }
 
 delay(5000);
+}
+  void dataBase(){
+  Serial.println("------------------------------------");
+  Serial.println("  ACTUALIZAR EL ESTADO DE LA TEMPERATURA");
+  //Also can use Firebase.set instead of Firebase.setDouble
+  if (Firebase.setInt(firebaseData, path + "/Temperatura/Bodega", t)){InforSetTemperatura();}else{CausaError();} 
+  Serial.println("------------------------------------");
+  Serial.println("  ACTUALIZAR EL ESTADO DE LA HUMEDAD");
+  //Also can use Firebase.set instead of Firebase.setDouble
+  if (Firebase.setInt(firebaseData, path + "/Humedad/Bodega", h)){InforSetHumedad();}else{CausaError();}
+  Serial.println("------------------------------------");
+  Serial.println("  LEER  EL  ESTADO  DE  LA TEMPERATURA");
+  if (Firebase.getInt(firebaseData, path + "/Temperatura/Bodega" )){InforGetTemperatura(); }else{CausaError(); }
+  Serial.println("------------------------------------");
+  Serial.println("  LEER  EL  ESTADO  DE  LA HUMEDAD");
+  if (Firebase.getInt(firebaseData, path + "/Humedad/Bodega" )){InforGetHumedad(); }else{CausaError(); }
+}
+void InforGetTemperatura(void)
+{
+  Serial.println("Aprobado");
+  Serial.println("Ruta: " + firebaseData.dataPath());
+  Serial.println("Tipo: " + firebaseData.dataType());
+  Serial.println("ETag: " + firebaseData.ETag());
+  Serial.print("Valor: ");
+  printResult(firebaseData);
+  Serial.println("------------------------------------");
+  Serial.println(); 
+}
+
+void InforSetTemperatura(void)
+{
+  Serial.println("Aprobado");
+  Serial.println("Ruta: " + firebaseData.dataPath());
+  Serial.println("Tipo: " + firebaseData.dataType());
+  Serial.println("ETag: " + firebaseData.ETag());
+  Serial.print("Valor: ");
+  printResult(firebaseData);
+  Serial.println("------------------------------------");
+  Serial.println(); 
+}
+void InforGetHumedad(void)
+{
+  Serial.println("Aprobado");
+  Serial.println("Ruta: " + firebaseData.dataPath());
+  Serial.println("Tipo: " + firebaseData.dataType());
+  Serial.println("ETag: " + firebaseData.ETag());
+  Serial.print("Valor: ");
+  printResult(firebaseData);
+  Serial.println("------------------------------------");
+  Serial.println(); 
+}
+
+void InforSetHumedad(void)
+{
+  Serial.println("Aprobado");
+  Serial.println("Ruta: " + firebaseData.dataPath());
+  Serial.println("Tipo: " + firebaseData.dataType());
+  Serial.println("ETag: " + firebaseData.ETag());
+  Serial.print("Valor: ");
+  printResult(firebaseData);
+  Serial.println("------------------------------------");
+  Serial.println(); 
+}
+void CausaError(void)
+{
+  Serial.println("ERROR");
+  Serial.println("RAZON: " + firebaseData.errorReason());
+  Serial.println("------------------------------------");
+  Serial.println();
+}
+
+void printResult(FirebaseData &data)
+{
+    if (data.dataType() == "int")
+        Serial.println(data.intData());
+    else if (data.dataType() == "float")
+        Serial.println(data.floatData(), 5);
+    else if (data.dataType() == "double")
+        printf("%.9lf\n", data.doubleData());
+    else if (data.dataType() == "boolean")
+        Serial.println(data.boolData() == 1 ? "true" : "false");
+    else if (data.dataType() == "string")
+        Serial.println(data.stringData());
 }
