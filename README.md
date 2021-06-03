@@ -47,13 +47,16 @@ para poder evidenciar el desarrollo del proyecto se debe tener en cuenta la inst
 Luego de tener los anteriores pasos pertinentes, se continua con descomprimir el archivo que decargo en el primer paso, en el que encuentra una carpeta del codigo fuente desarrollo en el software arduino.
 
 Red wifi
-- Para que el el proyecto le funcione debe tener cuenta la edicion del usuario y clave Wifi 
+- Para que el el proyecto le funcione debe tener cuenta la edicion del usuario y clave Wifi de la siguiente forma:
 
-
+const char* ssid = "Varelas grajales";
+const char* password = "F4m1l14V4r3l4";
 
 Datos de firebase
-- Copias el secreto de la base de datos y lo pegas en la linea 41 #define FIREBASE_AUTH
-- Copias el link disponible en realtime database y lo pegas en la linea 40 #define FIREBASE_HOST
+asi a su vez la edicion del firebase para tener una configuracion adecuada asi:
+
+#define FIREBASE_HOST "iott-fdf67-default-rtdb.firebaseio.com"
+#define FIREBASE_AUTH "rGIvKbezquXi4SZSSD1veFzR4aA8DCtQj7ikRrAc"
 
 ## Ejecutando el programa ⚙️
 
