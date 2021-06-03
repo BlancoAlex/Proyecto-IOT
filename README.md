@@ -2,16 +2,6 @@
 
 Este proyecto de IoT trata sobre una bodega que contiene leche y se debe mantener una temperatura ambiente para que no se dañe, tambien tiene otras funciones como detectar movimiento para abrir la puerta y enciender un led azul, al no detectar movimiento la puerta se cierra y se enciende el led rojo.
 
-## Tabla de contenidos:
-
-- [Comenzando](#comenzando)
-- [Instalacion](#instalacion)
-- [Ejecutando las pruebas](#ejecutando-las-pruebas)
-- [Mapeado de cable](#guía-de-instalación)
-- [Herramientas](#herramientas)
-- [Contribuyendo](#contribuyendo)
-- [Autores](#autores)
-
 ## Comenzando 🚀 
 
 _instrucciones para obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y pruebas._
