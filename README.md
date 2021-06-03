@@ -4,7 +4,8 @@ Este proyecto de IoT trata sobre una bodega que contiene leche y se debe mantene
 
 ## Comenzando 🚀 
 
-_instrucciones para obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y pruebas._
+Si desea realizar una descarga del proyecto y obtener nuevos conocimientos ingresa en boton verde que dice code, luego saldra una lista 
+desplegable con el link del proyecto asu vez las opciones de open with Github desktop y Download ZIP.
 
 ### Pre-requisitos 📋
 
