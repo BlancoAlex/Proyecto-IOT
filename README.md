@@ -24,21 +24,15 @@ _librerias_
 
 _Disponer del microcontrolador_
 
-```
 ESP8266
-```
 
 _Creas un proyecto en firebase_
 
-```
 Para crear una base de datos y almacenar la información.
-```
 
 _Creas un proyecto en ThingSpeak_
 
-```
 Para visualizar el flujo de los datos mediante gráficas.
-```
 
 _Creas una cuenta de Gmail para el proyecto, por temas de seguridad no es recomiendable usar una cuenta personal_
 
@@ -47,27 +41,27 @@ _Creas una cuenta de Gmail para el proyecto, por temas de seguridad no es recomi
 _Este es el paso a paso de lo que debes configurar_
 
 Red wifi
-
-```
-agregas el nombre de la red en la linea 27 y la contraseña en la linea 28
-```
+- agregas el nombre de la red en la linea 27 y la contraseña en la linea 28
 
 _Datos de firebase_
-
-```
 - Copias el secreto de la base de datos y lo pegas en la linea 41 #define FIREBASE_AUTH
 - Copias el link disponible en realtime database y lo pegas en la linea 40 #define FIREBASE_HOST
-```
 
 ## Ejecutando el programa ⚙️
 
-_Luego de la conexion con el broker MQTT se visualiza el envio de datos hacia la base de datos._
-_En la terminal se vera la entrada de los datos para confirmar el envio por el broker._
-_En el topic general se envian todos los estados, que son, la temperatura y la puerta._
-_despues verificaremos que los datos vistos en la consola se envien en la base de datos. Para esto entramos a Firebase en la seccion realtime database, sonde se cargara la informacion de humedad y temperatura._
-_En seguida, verificaremos las graficas en ThingSpeak._
-_Después comprobamos que se esten enviando los datos por los topics, para esto entramos al correo en el cual queremos que se envien los datos y en la consola alteramos el estado de la puerta haciendo una peticion._
-_Finalmente revizamos el correo para comprobar la alteración en alguno de los topics_
+Luego de la conexion con el broker MQTT se visualiza el envio de datos hacia la base de datos.
+
+En la terminal se vera la entrada de los datos para confirmar el envio por el broker.
+
+En el topic general se envian todos los estados, que son, la temperatura y la puerta.
+
+despues verificaremos que los datos vistos en la consola se envien en la base de datos. Para esto entramos a Firebase en la seccion realtime database, sonde se cargara la informacion de humedad y temperatura.
+
+En seguida, verificaremos las graficas en ThingSpeak.
+
+Después comprobamos que se esten enviando los datos por los topics, para esto entramos al correo en el cual queremos que se envien los datos y en la consola alteramos el estado de la puerta haciendo una peticion.
+
+Finalmente revizamos el correo para comprobar la alteración en alguno de los topics
 
 ## Mapeado de cables ⌨️ 
 
