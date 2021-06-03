@@ -5,7 +5,10 @@ Este proyecto de IoT trata sobre una bodega que contiene leche y se debe mantene
 ## Comenzando 🚀 
 
 Si desea realizar una descarga del proyecto y obtener nuevos conocimientos ingresa en boton verde que dice code, luego saldra una lista 
-desplegable con el link del proyecto asu vez las opciones de open with Github desktop y Download ZIP.
+desplegable con el link del proyecto asu vez las opciones de:
+
+-open with Github desktop 
+-Download ZIP.
 
 ### Pre-requisitos 📋
 
@@ -39,7 +42,9 @@ Para visualizar el flujo de los datos mediante gráficas.
 
 ## Instalación 🔧 
 
-_Este es el paso a paso de lo que debes configurar_
+para poder tener el desarrollo del proyecto se debe de tene en cuenta la instalacion del software arduino ya que alli fue donde se configuro generalmente todo el proyecto.
+
+Luego de tener los anteriores pasos pertinentes, se continua con descomprimido el archivo que decargo en el primer paso.
 
 Red wifi
 - agregas el nombre de la red en la linea 27 y la contraseña en la linea 28
