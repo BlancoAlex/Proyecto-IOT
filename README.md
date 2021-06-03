@@ -7,7 +7,7 @@ Este proyecto de IoT trata sobre una bodega que contiene leche y se debe mantene
 Si desea realizar una descarga del proyecto y obtener nuevos conocimientos ingresa en boton verde que dice code, luego saldra una lista 
 desplegable con el link del proyecto asu vez las opciones de:
 
--open with Github desktop 
+-open with Github desktop.
 -Download ZIP.
 
 ### Pre-requisitos 📋
@@ -42,12 +42,14 @@ Para visualizar el flujo de los datos mediante gráficas.
 
 ## Instalación 🔧 
 
-para poder tener el desarrollo del proyecto se debe de tene en cuenta la instalacion del software arduino ya que alli fue donde se configuro generalmente todo el proyecto.
+para poder evidenciar el desarrollo del proyecto se debe tener en cuenta la instalacion del software arduino ya que alli fue donde se configuro generalmente todo el proyecto.
 
-Luego de tener los anteriores pasos pertinentes, se continua con descomprimido el archivo que decargo en el primer paso.
+Luego de tener los anteriores pasos pertinentes, se continua con descomprimir el archivo que decargo en el primer paso, en el que encuentra una carpeta del codigo fuente desarrollo en el software arduino.
 
 Red wifi
-- agregas el nombre de la red en la linea 27 y la contraseña en la linea 28
+- Para que el el proyecto le funcione debe tener cuenta la edicion del usuario y clave Wifi 
+
+
 
 Datos de firebase
 - Copias el secreto de la base de datos y lo pegas en la linea 41 #define FIREBASE_AUTH
