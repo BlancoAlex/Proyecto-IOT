@@ -12,7 +12,7 @@ Este proyecto de IoT trata sobre una bodega que contiene leche y se debe mantene
 - [Contribuyendo](#contribuyendo)
 - [Autores](#autores)
 
-## Comenzando 🚀 aponte
+## Comenzando 🚀 
 
 _instrucciones para obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y pruebas._
 
@@ -52,7 +52,7 @@ Para visualizar el flujo de los datos mediante gráficas.
 
 _Creas una cuenta de Gmail para el proyecto, por temas de seguridad no es recomiendable usar una cuenta personal_
 
-## Instalación 🔧 aponte
+## Instalación 🔧 
 
 _Este es el paso a paso de lo que debes configurar_
 
@@ -79,7 +79,7 @@ _En seguida, verificaremos las graficas en ThingSpeak._
 _Después comprobamos que se esten enviando los datos por los topics, para esto entramos al correo en el cual queremos que se envien los datos y en la consola alteramos el estado de la puerta haciendo una peticion._
 _Finalmente revizamos el correo para comprobar la alteración en alguno de los topics_
 
-## Mapeado de cables ⌨️ aponte
+## Mapeado de cables ⌨️ 
 
 _Mapeado de cables_
 
