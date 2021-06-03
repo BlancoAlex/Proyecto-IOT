@@ -41,6 +41,9 @@ PubSubClient client(espClient);
 const int DHTPin = 5;
 const int cooler = 4;
 const int sv = 0;
+const int PINR = 14;
+const int PINB = 12;
+const int SMovimiento = 2;
 DHT dht(DHTPin, DHTTYPE);
 Servo servo1;
 
@@ -56,6 +59,7 @@ String strpublicar, strtemp, strhum;
 char msg[85], msgtemp[30], msghum[30];
 String top;
 String mens = "";
+int EstadoMovimiento;
 
 //timers
 const unsigned long publeshTemp = 25000;
@@ -84,6 +88,9 @@ void setup() {
   //SENSORES
   pinMode(DHTPin, INPUT);
   pinMode(cooler, OUTPUT);
+  pinMode(PINR, OUTPUT);
+  pinMode(PINB, OUTPUT);
+  pinMode(SMovimiento, INPUT);
   servo1.attach(0);
   servo1.write(0);
   dht.begin();
@@ -98,6 +105,7 @@ void loop() {
   if (client.connected()) {
     lastT = dht.readTemperature();
     h = dht.readHumidity();
+    detectarMovimeinto();
     if (!isnan(lastT)) {
       t = lastT;
     }
@@ -238,9 +246,11 @@ void leerSubscripcion() {
   
   if (top == "puerta") {
     Serial.println(mens);
-    if (mens == "abrir") {
+    if (mens == "abrir"){ // && digitalRead(SMovimiento) == 1) 
       Serial.println(mens);
       servo1.write(120);
+      digitalWrite(PINB,HIGH);
+      digitalWrite(PINR,LOW);
       stateServo = true;
       top = "";
       Serial.print(stateServo);
@@ -249,6 +259,10 @@ void leerSubscripcion() {
     else if (mens = "cerrar") {
       Serial.println(mens);
       servo1.write(0);
+      digitalWrite(PINB,LOW);
+      digitalWrite(PINR,HIGH);
+      delay(10000);
+      digitalWrite(PINR,LOW);
       stateServo = false;
       top = "";
       email();
@@ -295,4 +309,17 @@ void email() {
                  "\r\n" );
     event = false; // ensure request once
   }
+}
+
+void detectarMovimeinto(){
+  EstadoMovimiento = digitalRead(SMovimiento);
+  Serial.println(EstadoMovimiento);
+  if (EstadoMovimiento == HIGH) {
+    Serial.println("Motion detected!");
+    }
+  else {
+    Serial.println("No Motion detected!");
+    }
+
+delay(5000);
 }
