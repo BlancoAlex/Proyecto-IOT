@@ -22,19 +22,19 @@ _librerias_
 - FirebaseESP8266.h
 ```
 
-_Disponer del microcontrolador_
+- _Disponer del microcontrolador_
 
 ESP8266
 
-_Creas un proyecto en firebase_
+- _Creas un proyecto en firebase_
 
 Para crear una base de datos y almacenar la información.
 
-_Creas un proyecto en ThingSpeak_
+- _Creas un proyecto en ThingSpeak_
 
 Para visualizar el flujo de los datos mediante gráficas.
 
-_Creas una cuenta de Gmail para el proyecto, por temas de seguridad no es recomiendable usar una cuenta personal_
+- _Creas una cuenta de Gmail para el proyecto, por temas de seguridad no es recomiendable usar una cuenta personal_
 
 ## Instalación 🔧 
 
@@ -49,19 +49,13 @@ _Datos de firebase_
 
 ## Ejecutando el programa ⚙️
 
-Luego de la conexion con el broker MQTT se visualiza el envio de datos hacia la base de datos.
-
-En la terminal se vera la entrada de los datos para confirmar el envio por el broker.
-
-En el topic general se envian todos los estados, que son, la temperatura y la puerta.
-
-despues verificaremos que los datos vistos en la consola se envien en la base de datos. Para esto entramos a Firebase en la seccion realtime database, sonde se cargara la informacion de humedad y temperatura.
-
-En seguida, verificaremos las graficas en ThingSpeak.
-
-Después comprobamos que se esten enviando los datos por los topics, para esto entramos al correo en el cual queremos que se envien los datos y en la consola alteramos el estado de la puerta haciendo una peticion.
-
-Finalmente revizamos el correo para comprobar la alteración en alguno de los topics
+- Luego de la conexion con el broker MQTT se visualiza el envio de datos hacia la base de datos.
+- En la terminal se vera la entrada de los datos para confirmar el envio por el broker.
+- En el topic general se envian todos los estados, que son, la temperatura y la puerta.
+- despues verificaremos que los datos vistos en la consola se envien en la base de datos. Para esto entramos a Firebase en la seccion realtime database, sonde se cargara la informacion de humedad y temperatura.
+- En seguida, verificaremos las graficas en ThingSpeak.
+- Después comprobamos que se esten enviando los datos por los topics, para esto entramos al correo en el cual queremos que se envien los datos y en la consola alteramos el estado de la puerta haciendo una peticion.
+- Finalmente revizamos el correo para comprobar la alteración en alguno de los topics
 
 ## Mapeado de cables ⌨️ 
 
