@@ -10,7 +10,7 @@ _instrucciones para obtener una copia del proyecto en funcionamiento en tu máqu
 
 _Esto es lo que necesitas para ejecutar el proyecto:_
 
-_librerias_
+librerias
 
 ```
 - PubSubClient.h
@@ -22,19 +22,19 @@ _librerias_
 - FirebaseESP8266.h
 ```
 
-- _Disponer del microcontrolador_
+- Disponer del microcontrolador
 
 ESP8266
 
-- _Creas un proyecto en firebase_
+- Creas un proyecto en firebase
 
 Para crear una base de datos y almacenar la información.
 
-- _Creas un proyecto en ThingSpeak_
+- Creas un proyecto en ThingSpeak
 
 Para visualizar el flujo de los datos mediante gráficas.
 
-- _Creas una cuenta de Gmail para el proyecto, por temas de seguridad no es recomiendable usar una cuenta personal_
+- Creas una cuenta de Gmail para el proyecto, por temas de seguridad no es recomiendable usar una cuenta personal
 
 ## Instalación 🔧 
 
@@ -43,7 +43,7 @@ _Este es el paso a paso de lo que debes configurar_
 Red wifi
 - agregas el nombre de la red en la linea 27 y la contraseña en la linea 28
 
-_Datos de firebase_
+Datos de firebase
 - Copias el secreto de la base de datos y lo pegas en la linea 41 #define FIREBASE_AUTH
 - Copias el link disponible en realtime database y lo pegas en la linea 40 #define FIREBASE_HOST
 
