@@ -68,16 +68,6 @@ asi a su vez la edicion del firebase para tener una configuracion adecuada asi:
 - Después comprobamos que se esten enviando los datos por los topics, para esto entramos al correo en el cual queremos que se envien los datos y en la consola alteramos el estado de la puerta haciendo una peticion.
 - Finalmente revizamos el correo para comprobar la alteración en alguno de los topics
 
-## Mapeado de cables ⌨️ 
-
-_Mapeado de cables_
-
-<p align="center"><img src="https://pm1.narvii.com/6139/7e51d04dfe2d12c33ad3426656d7e8171277c1d3_hq.jpg"/></p>
-
-```
-ejemplo
-```
-
 ## Construido con 🛠️
 
 _herramientas utilizadas_
